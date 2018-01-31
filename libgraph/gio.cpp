@@ -3,7 +3,6 @@
 
 static vector<bool> inputVector(uint64_t numVector){
     vector<bool> ret;
-    ret.resize(numVector);
     int64_t input;
     bool showWarning = false;
     while(numVector > 0){
@@ -15,6 +14,21 @@ static vector<bool> inputVector(uint64_t numVector){
     }
     if(showWarning){
         cout << " (Warning : Invalid values read as 'true' by default!) \n";
+    }
+    cin.ignore(INTMAX_MAX, '\n');    
+    return ret;
+}
+
+static vector<uint64_t> inputIntVector(uint64_t numVector){
+    vector<uint64_t> ret;
+    int64_t input;
+    while(numVector > 0){
+        cin >> input;
+        if(input < 0)
+            ret.push_back(DISTANCE_INF);
+        else
+            ret.push_back(input);
+        numVector--;
     }
     cin.ignore(INTMAX_MAX, '\n');    
     return ret;
@@ -56,6 +70,18 @@ vector<vector<bool>> inputAdjacencyMatrix(uint64_t numVertices){
     while(i < numVertices){
         cout << "\n v" << i++ << " | ";
         ret.push_back(inputVector(numVertices));
+    }
+    return ret;
+}
+
+vector<vector<uint64_t>> inputLengthMatrix(uint64_t numVertices){
+    cout << "\n(Enter any negative number to denote no path exists between two vertices)\n";
+    showHeader(numVertices, 'v');
+    uint64_t i = 0;
+    vector<vector<uint64_t>> ret;
+    while(i < numVertices){
+        cout << "\n v" << i++ << " | ";
+        ret.push_back(inputIntVector(numVertices));
     }
     return ret;
 }
