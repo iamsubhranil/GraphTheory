@@ -58,8 +58,10 @@ uint64_t Vertex::outDegree(){
     return outEdgeSet.size();
 }
 
-// Yet not implemented
 bool Vertex::operator==(const Vertex& v1){
+    if((this->inDegree() == v1.inEdgeSet.size())
+            && (this->outDegree() == v1.outEdgeSet.size()))
+            return true;
     return false;
 }
 
