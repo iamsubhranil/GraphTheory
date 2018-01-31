@@ -4,3 +4,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_CXX_STANDARD 11)
 add_subdirectory(libgraph)
+
+add_executable(dijkstra dijkstra.cpp)
+target_link_libraries(dijkstra graph)
+target_include_directories(dijkstra PRIVATE ${CMAKE_SOURCE_DIR}/include)
