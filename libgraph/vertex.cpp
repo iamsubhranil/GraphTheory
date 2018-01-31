@@ -1,6 +1,6 @@
 #include <unordered_set>
-#include "vertex.h"
-#include "edge.h"
+#include <vertex.h>
+#include <edge.h>
 
 uint64_t Vertex::vid = 0;
 

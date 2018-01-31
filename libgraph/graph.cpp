@@ -1,5 +1,5 @@
 #include <iostream>
-#include "graph.h"
+#include <graph.h>
 
 using namespace std;
 
@@ -77,7 +77,7 @@ std::ostream& operator<<(std::ostream &strm, const Graph &g) {
     return strm << "} }";
 }
 
-int main(){
+int test_graph(){
     vector<vector<bool>> mat = {{ false, false, false, true, false, true, false, false},
                                 { false, false, false, false, true, true, true, true},
                                 { false, false, false, false, false, false, false, true},

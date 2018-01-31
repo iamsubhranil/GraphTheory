@@ -1,4 +1,4 @@
-#include "gio.h"
+#include <gio.h>
 #include <iostream>
 
 static vector<bool> inputVector(uint64_t numVector){
@@ -60,7 +60,7 @@ vector<vector<bool>> inputAdjacencyMatrix(uint64_t numVertices){
     return ret;
 }
 
-int main(){
+int test_gio(){
     inputIncidenceMatrix(5, 4);
     return 0;
 }

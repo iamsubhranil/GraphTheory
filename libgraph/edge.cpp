@@ -1,5 +1,5 @@
-#include "edge.h"
-#include "vertex.h"
+#include <edge.h>
+#include <vertex.h>
 
 Edge::Edge() : Edge(NULL, NULL) {}
 Edge::Edge(Vertex* s, Vertex* d) : Edge(s, d, "", false, UINT64_MAX){}
