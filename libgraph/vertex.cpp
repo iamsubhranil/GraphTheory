@@ -62,3 +62,7 @@ uint64_t Vertex::outDegree(){
 bool Vertex::operator==(const Vertex& v1){
     return false;
 }
+
+std::ostream& operator<<(std::ostream &strm, const Vertex &v) {
+  return strm << v.nam;
+}

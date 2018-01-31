@@ -1,6 +1,7 @@
 #include "edge.h"
 #include "vertex.h"
 
+Edge::Edge() : Edge(NULL, NULL) {}
 Edge::Edge(Vertex* s, Vertex* d) : Edge(s, d, "", false, UINT64_MAX){}
 Edge::Edge(Vertex* s, Vertex* d, string name) : Edge(s, d, name, false, UINT64_MAX){}
 Edge::Edge(Vertex* s, Vertex* d, uint64_t w) : Edge(s, d, "", false, w){}
@@ -16,21 +17,23 @@ Edge::Edge(Vertex* s, Vertex* d, string name, bool isDirected, uint64_t weight){
     nam = name;
 
     source = s;
-    s->addEdge(this);
+    if(source != NULL)
+        source->addEdge(this);
 
     dest = d;
-    dest->addIncomingEdge(this);
+    if(dest != NULL)
+        dest->addIncomingEdge(this);
 
     isDirectd = isDirected;
     wt = weight;
 }
 
 Vertex* Edge::destVertex(){
-    return dest;
+    return Edge::dest;
 }
 
 Vertex* Edge::sourceVertex(){
-    return source;
+    return Edge::source;
 }
 
 void Edge::setWeight(uint64_t w){
@@ -38,15 +41,15 @@ void Edge::setWeight(uint64_t w){
 }
 
 uint64_t Edge::weight(){
-    return wt;
+    return Edge::wt;
 }
 
 string Edge::name(){
-    return nam;
+    return Edge::nam;
 }
 
 bool Edge::isDirected(){
-    return isDirectd;
+    return Edge::isDirectd;
 }
 
 bool Edge::operator==(const Edge& e){
@@ -62,4 +65,18 @@ bool Edge::operator==(const Edge& e){
     }
 
     return false;
+}
+
+void Edge::setSource(Vertex* v){
+    source = v;
+    v->addEdge(this);
+}
+
+void Edge::setDest(Vertex* v){
+    dest = v;
+    dest->addIncomingEdge(this);
+}
+
+std::ostream& operator<<(std::ostream &strm, const Edge& e) {
+  return strm << "(" << *e.source << ", " << *e.dest << ")";
 }

@@ -37,4 +37,5 @@ class Vertex{
         static uint64_t vid;
         unordered_set<Edge*> inEdgeSet;
         unordered_set<Edge*> outEdgeSet;
+        friend std::ostream& operator<<(std::ostream&, const Vertex&);
 };

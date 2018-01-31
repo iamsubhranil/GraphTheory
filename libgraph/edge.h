@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <cstdint>
 #include <string>
 
@@ -9,6 +10,7 @@ class Vertex;
 
 class Edge{
     public:
+        Edge();
         Edge(Vertex* source, Vertex* dest);
         Edge(Vertex* source, Vertex* dest, string n);
         Edge(Vertex* source, Vertex* dest, bool isDirected);
@@ -18,6 +20,8 @@ class Edge{
         Edge(Vertex* source, Vertex* dest, string n, bool isDirected, uint64_t weight);
 
         void setWeight(uint64_t w);
+        void setSource(Vertex* v);
+        void setDest(Vertex* v);
 
         string name();
         Vertex* sourceVertex();
@@ -35,4 +39,5 @@ class Edge{
         uint64_t wt;
         bool isDirectd;
 
+        friend std::ostream& operator<<(std::ostream&, const Edge&);
 };
